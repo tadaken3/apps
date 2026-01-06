@@ -90,39 +90,40 @@
         /* プロフィールセクション */
         .profile-card {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 2.5rem 1.5rem; /* 省スペース化: 4rem -> 2.5rem */
             opacity: 0;
             animation: fadeInUp 1s ease-out forwards;
         }
 
         .profile-img {
-            width: 120px;
-            height: 120px;
+            width: 90px;  /* 省スペース化: 120px -> 90px */
+            height: 90px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid rgba(255,255,255,0.8);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.8rem; /* 省スペース化: 1.5rem -> 0.8rem */
             background-color: #fff;
         }
 
         h1 {
-            font-size: 2.5rem;
-            margin: 0.5rem 0;
+            font-size: 2rem; /* 省スペース化: 2.5rem -> 2rem */
+            margin: 0.2rem 0;
             color: #333;
         }
 
         .role {
             font-weight: 500;
             color: #666;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem; /* 省スペース化: 2rem -> 1.2rem */
             letter-spacing: 0.05em;
+            font-size: 0.9rem;
         }
 
         .links-row {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem; /* 省スペース化: 1.5rem -> 1rem */
             flex-wrap: wrap;
         }
         
@@ -130,15 +131,15 @@
         /* リンクボタンのデザイン（アイコン用） */
         .glass-btn {
             background: rgba(255, 255, 255, 0.4);
-            width: 50px;
-            height: 50px;
+            width: 44px; /* 省スペース化: 50px -> 44px */
+            height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: #555;
-            font-size: 1.2rem;
+            font-size: 1.1rem; /* 少し小さく */
             transition: 0.3s;
             border: 1px solid #fff;
             position: relative;
@@ -326,7 +327,7 @@
             
             <h1 id="user-name"></h1>
             <p id="user-role" class="role"></p>
-            <p id="user-bio" style="margin-bottom: 2rem; line-height: 1.8;"></p>
+            <p id="user-bio" style="margin-bottom: 1.5rem; line-height: 1.6; font-size: 0.95rem;"></p>
             
             <div id="links-container" class="links-row">
             </div>
@@ -366,7 +367,8 @@
             role: "iOS Developer",
             
             // 簡単な自己紹介（プロフィールカード内）
-            bio: "AI駆動開発で複数アプリを運営。<br>暮らしを、少し豊かにするアプリを作っています。<br>手を動かしたものが世界を変える",
+            // 簡単な自己紹介（プロフィールカード内）
+            bio: "人の記憶に残る、暮らしを豊かにするアプリを作っています。<br>一冊の本が人生を変えるように、<br>たった一つのアプリが誰かの人生を変えると信じて。",
             
             // 【NEW】追加コンテンツエリア
             // ここにタイトルと本文を入力すると、プロフィールの下に表示されます。
