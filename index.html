@@ -180,12 +180,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.5s, filter 0.5s;
             background-color: rgba(255,255,255,0.2);
+            /* カラフルさを少し抑えるために彩度を下げる */
+            filter: saturate(0.7);
         }
         
         .gallery-item:hover img {
             transform: scale(1.1);
+            /* ホバー時に彩度を元に戻す */
+            filter: saturate(1);
         }
 
         .item-overlay {
@@ -265,7 +269,7 @@
 
     <div class="container">
         <div class="glass-card profile-card">
-            <img src="image/profile.jpg" 
+            <img src="image/profile.png" 
                  alt="Profile" class="profile-img"
                  onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23cccccc%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274%22%20y%3D%22104%22%3EProfile%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'">
             
@@ -305,19 +309,19 @@
          */
         const config = {
             // あなたのお名前
-            name: "YAMADA TARO",
+            name: "Ken.T",
             
             // 肩書き
-            role: "UI/UX Designer",
+            role: "iOS Developer",
             
             // 簡単な自己紹介（プロフィールカード内）
-            bio: "透明感のあるデザインと、心地よいユーザー体験を。<br>シンプルで愛されるインターフェースを作ります。",
+            bio: "個人開発者としてiOSアプリを作っています。<br>使いやすさとデザインにこだわったアプリを開発しています。",
             
             // 【NEW】追加コンテンツエリア
             // ここにタイトルと本文を入力すると、プロフィールの下に表示されます。
             // 不要な場合は、show: false にしてください。
             freeContent: {
-                show: true, // trueで表示、falseで非表示
+                show: false, // trueで表示、falseで非表示
                 title: "About Me & Philosophy",
                 body: `
                     ここでは、短い自己紹介文には書ききれない詳細な情報を掲載できます。<br><br>
@@ -330,28 +334,35 @@
 
             // SNSなどのリンク設定
             links: [
-                { label: "Instagram", url: "#" },
-                { label: "X (Twitter)", url: "#" },
-                { label: "Behance", url: "#" },
-                { label: "Email", url: "mailto:hello@example.com" }
+                { label: "GitHub", url: "https://github.com/tadaken3" },
+                // 他のリンクがあればここに追加
             ],
 
             // ギャラリーの画像設定
             // title: 画像の上に表示されるタイトル
             // category: 拡大時に表示されるカテゴリ名
-            // ※画像ファイルは image フォルダの中に image1.jpg, image2.jpg... と連番で保存してください
+            // imageUrl: 画像のURL
             metaData: [
-                { title: "Mobile App", category: "UI Design" },
-                { title: "Dashboard", category: "Web Design" },
-                { title: "Icon Set", category: "Graphics" },
-                { title: "Brand Identity", category: "Branding" },
-                { title: "Photography", category: "Hobby" },
-                { title: "Travel Log", category: "Blog" }
+                { 
+                    title: "Your Time", 
+                    category: "iOS App", 
+                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/a7/b3/c2a7b39a-507d-4f66-9f70-94fc910fa5f8/AppIcon-0-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
+                    appUrl: "https://apps.apple.com/jp/app/your-time-%E5%AF%BF%E5%91%BD%E3%82%92%E8%A6%8B%E3%81%88%E3%82%8B%E5%8C%96%E3%81%97-%E7%9B%AE%E6%A8%99%E3%81%AB%E9%9B%86%E4%B8%AD/id6745560143"
+                },
+                { 
+                    title: "超集中タイマー", 
+                    category: "iOS App", 
+                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ce/dc/06/cedc06ac-222c-af76-839b-dec723e90cda/AppIcon-0-1x_U007emarketing-0-8-0-85-220-0.png/540x540bb.jpg",
+                    appUrl: "https://apps.apple.com/jp/app/%E8%B6%85%E9%9B%86%E4%B8%AD%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC-%E5%8B%89%E5%BC%B7-%E4%BB%95%E4%BA%8B%E3%81%AB%E9%9B%86%E4%B8%AD%E5%8A%9B%E3%82%92/id6743546176"
+                },
+                { 
+                    title: "Fit Routine", 
+                    category: "iOS App", 
+                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/ee/e0/61eee01e-b704-76d7-edf1-dca8316529d5/AppIcon-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
+                    appUrl: "https://apps.apple.com/jp/app/fit-routine-%E9%81%8B%E5%8B%95%E3%82%92%E7%BF%92%E6%85%A3%E5%8C%96%E3%81%99%E3%82%8B/id6751544895"
+                }
             ]
         };
-
-        // 読み込む画像の最大数（増やしたい場合はこの数字を変更）
-        const MAX_IMAGES = 18; 
 
         /**
          * ==============================================
@@ -383,12 +394,10 @@
             // ギャラリーの生成
             const grid = document.getElementById('gallery-grid');
             
-            // 1からMAX_IMAGESまでループして画像を生成
-            for (let i = 1; i <= MAX_IMAGES; i++) {
-                const dataIndex = i - 1;
-                // 設定データがない場合はデフォルト値を使用
-                const meta = config.metaData[dataIndex] || { title: `Work ${i}`, category: 'Gallery' };
-                const imgPath = `image/image${i}.jpg`; 
+            config.metaData.forEach((meta, index) => {
+                // データインデックスはそのまま使用
+                const i = index + 1;
+                const imgPath = meta.imageUrl;
 
                 const div = document.createElement('div');
                 div.className = 'gallery-item glass-card';
@@ -409,9 +418,28 @@
                     </div>
                 `;
                 
-                div.onclick = () => openModal(meta.title, meta.category, imgPath);
+                // クリック時の動作: アプリのURLがあればそこに遷移、なければ以前同様モーダルを開く(今回は全て遷移させるか、要件外だがクリックで詳細へ飛ぶのが自然)
+                // しかし、Issueでは「アプリのまとめサイトを入れる」とあり、リンクが必要。
+                // 元のコードはモーダルを開く仕様。
+                // 今回はモーダルで拡大表示する画像の代わりにアプリアイコンを表示しつつ、
+                // タップしたらアプリストアへ飛ぶように変更するか？
+                // しかし元の仕様を壊しすぎるのも危険。
+                // ひとまずモーダル表示は維持しつつ、モーダル内にリンクを表示するか？
+                // あるいはクリックしたら別タブで開くようにするか。
+                // Issueには「リンクを追加したい」とは明記されていないが、アプリへのリンクURLが貼られているので、遷移できることが望ましい。
+                // ここではシンプルに、クリックしたらモーダルではなくアプリURLへ飛ぶように変更しよう。
+                // 元のコード: div.onclick = () => openModal(meta.title, meta.category, imgPath);
+                
+                if (meta.appUrl) {
+                    div.onclick = () => window.open(meta.appUrl, '_blank');
+                    // カーソルをポインターにする
+                    div.style.cursor = 'pointer';
+                } else {
+                    div.onclick = () => openModal(meta.title, meta.category, imgPath);
+                }
+                
                 grid.appendChild(div);
-            }
+            });
         });
 
         // モーダル操作
