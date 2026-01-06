@@ -14,6 +14,7 @@
     <title>Portfolio - GLASS</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=M+PLUS+Rounded+1c:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
         /* 【デザイン設定エリア】
@@ -126,20 +127,49 @@
         }
         
         /* リンクボタンのデザイン */
+        /* リンクボタンのデザイン（アイコン用） */
         .glass-btn {
             background: rgba(255, 255, 255, 0.4);
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
             color: #555;
-            font-weight: 700;
+            font-size: 1.2rem;
             transition: 0.3s;
             border: 1px solid #fff;
+            position: relative;
         }
         .glass-btn:hover {
             background: #fff;
             transform: translateY(-2px);
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: #333;
+        }
+        /* ツールチップ（ホバー時にサービス名を表示） */
+        .glass-btn::after {
+            content: attr(aria-label);
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.2s;
+            pointer-events: none;
+        }
+        .glass-btn:hover::after {
+            opacity: 1;
+            visibility: visible;
         }
 
         /* --- 追加: テキストコンテンツエリア用スタイル --- */
@@ -171,9 +201,18 @@
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            aspect-ratio: 1;
+            /* aspect-ratioは削除して、コンテンツに合わせて高さを可変にする */
+            display: flex;
+            flex-direction: column;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .gallery-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            overflow: hidden;
         }
         
         .gallery-item img {
@@ -208,6 +247,18 @@
         
         .gallery-item:hover .item-overlay {
             opacity: 1;
+        }
+
+        /* アプリ説明文のスタイル */
+        .app-description {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: #555;
+            text-align: left;
+            flex-grow: 1; /* 余白があれば埋める */
         }
 
         /* 拡大表示（モーダル） */
@@ -315,7 +366,7 @@
             role: "iOS Developer",
             
             // 簡単な自己紹介（プロフィールカード内）
-            bio: "個人開発者としてiOSアプリを作っています。<br>使いやすさとデザインにこだわったアプリを開発しています。",
+            bio: "AI駆動開発で複数アプリを運営。<br>暮らしを、少し豊かにするアプリを作っています。<br>手を動かしたものが世界を変える",
             
             // 【NEW】追加コンテンツエリア
             // ここにタイトルと本文を入力すると、プロフィールの下に表示されます。
@@ -332,10 +383,16 @@
                 `
             },
 
-            // SNSなどのリンク設定
+            // SNSなどのリンク設定 (iconはFontAwesomeのクラス名)
             links: [
-                { label: "GitHub", url: "https://github.com/tadaken3" },
-                // 他のリンクがあればここに追加
+                { label: "Instagram", url: "https://www.instagram.com/ken.t.code", icon: "fa-brands fa-instagram" },
+                { label: "Threads", url: "https://www.threads.com/@ken.t.code", icon: "fa-brands fa-threads" },
+                { label: "note", url: "https://note.com/ken_t_code", icon: "fa-solid fa-pen-nib" },
+                { label: "TikTok", url: "https://www.tiktok.com/@ken.t.code", icon: "fa-brands fa-tiktok" },
+                { label: "X (Twitter)", url: "https://x.com/KenT_code3", icon: "fa-brands fa-x-twitter" },
+                { label: "Zenn", url: "https://zenn.dev/kent3", icon: "fa-solid fa-code" },
+                { label: "SpeakerDeck", url: "https://speakerdeck.com/kent_code3", icon: "fa-brands fa-speaker-deck" },
+                { label: "GitHub", url: "https://github.com/tadaken3", icon: "fa-brands fa-github" }
             ],
 
             // ギャラリーの画像設定
@@ -347,19 +404,22 @@
                     title: "Your Time", 
                     category: "iOS App", 
                     imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/a7/b3/c2a7b39a-507d-4f66-9f70-94fc910fa5f8/AppIcon-0-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
-                    appUrl: "https://apps.apple.com/jp/app/your-time-%E5%AF%BF%E5%91%BD%E3%82%92%E8%A6%8B%E3%81%88%E3%82%8B%E5%8C%96%E3%81%97-%E7%9B%AE%E6%A8%99%E3%81%AB%E9%9B%86%E4%B8%AD/id6745560143"
+                    appUrl: "https://apps.apple.com/jp/app/your-time-%E5%AF%BF%E5%91%BD%E3%82%92%E8%A6%8B%E3%81%88%E3%82%8B%E5%8C%96%E3%81%97-%E7%9B%AE%E6%A8%99%E3%81%AB%E9%9B%86%E4%B8%AD/id6745560143",
+                    description: "残り時間を可視化し、人生の有限性に気づく。「やるべきこと」ではなく「やりたいこと」に時間を使うためのアプリ。"
                 },
                 { 
                     title: "超集中タイマー", 
                     category: "iOS App", 
                     imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ce/dc/06/cedc06ac-222c-af76-839b-dec723e90cda/AppIcon-0-1x_U007emarketing-0-8-0-85-220-0.png/540x540bb.jpg",
-                    appUrl: "https://apps.apple.com/jp/app/%E8%B6%85%E9%9B%86%E4%B8%AD%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC-%E5%8B%89%E5%BC%B7-%E4%BB%95%E4%BA%8B%E3%81%AB%E9%9B%86%E4%B8%AD%E5%8A%9B%E3%82%92/id6743546176"
+                    appUrl: "https://apps.apple.com/jp/app/%E8%B6%85%E9%9B%86%E4%B8%AD%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC-%E5%8B%89%E5%BC%B7-%E4%BB%95%E4%BA%8B%E3%81%AB%E9%9B%86%E4%B8%AD%E5%8A%9B%E3%82%92/id6743546176",
+                    description: "25分の作業と5分の休憩を繰り返すポモドーロ・テクニック。シンプルで効果的な時間管理で集中力を高める。"
                 },
                 { 
                     title: "Fit Routine", 
                     category: "iOS App", 
                     imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/ee/e0/61eee01e-b704-76d7-edf1-dca8316529d5/AppIcon-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
-                    appUrl: "https://apps.apple.com/jp/app/fit-routine-%E9%81%8B%E5%8B%95%E3%82%92%E7%BF%92%E6%85%A3%E5%8C%96%E3%81%99%E3%82%8B/id6751544895"
+                    appUrl: "https://apps.apple.com/jp/app/fit-routine-%E9%81%8B%E5%8B%95%E3%82%92%E7%BF%92%E6%85%A3%E5%8C%96%E3%81%99%E3%82%8B/id6751544895",
+                    description: "1タップで運動記録。ウィジェットで今週の成果を確認し、運動習慣を継続しやすくするアプリ。"
                 }
             ]
         };
@@ -387,8 +447,11 @@
             // リンクボタンの生成
             const linksContainer = document.getElementById('links-container');
             config.links.forEach(link => {
-                // 変更点: target="_blank" と rel="noopener noreferrer" を追加
-                linksContainer.innerHTML += `<a href="${link.url}" class="glass-btn" target="_blank" rel="noopener noreferrer">${link.label}</a>`;
+                // 変更点: アイコンを表示、ツールチップ用にaria-labelを設定
+                linksContainer.innerHTML += `
+                    <a href="${link.url}" class="glass-btn" target="_blank" rel="noopener noreferrer" aria-label="${link.label}">
+                        <i class="${link.icon}"></i>
+                    </a>`;
             });
 
             // ギャラリーの生成
@@ -410,12 +473,15 @@
 
                 // 画像読み込みエラー時（ファイルがない場合）はその要素自体を非表示にする
                 div.innerHTML = `
-                    <img src="${imgPath}" 
-                         alt="${meta.title}"
-                         onerror="this.closest('.gallery-item').style.display='none'">
-                    <div class="item-overlay">
-                        <span>${meta.title}</span>
+                    <div class="gallery-image-wrapper">
+                        <img src="${imgPath}" 
+                             alt="${meta.title}"
+                             onerror="this.closest('.gallery-item').style.display='none'">
+                        <div class="item-overlay">
+                            <span>${meta.title}</span>
+                        </div>
                     </div>
+                    ${meta.description ? `<div class="app-description">${meta.description}</div>` : ''}
                 `;
                 
                 // クリック時の動作: アプリのURLがあればそこに遷移、なければ以前同様モーダルを開く(今回は全て遷移させるか、要件外だがクリックで詳細へ飛ぶのが自然)
