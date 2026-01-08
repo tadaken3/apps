@@ -11,6 +11,7 @@
 - **Responsive Layout**: デスクトップ・モバイル両対応
 - **Compact Profile**: アプリ一覧（Works）を際立たせるコンパクトなプロフィール設計
 - **App Gallery**: 開発したアプリの特徴を画像と説明文で紹介
+- **PWA Ready**: ホーム画面に追加してアプリのように利用可能
 
 ## 🛠 Technologies
 - HTML5

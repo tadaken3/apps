@@ -1,6 +1,6 @@
 {
-  "name": "YourTime",
-  "short_name": "YourTime",
+  "name": "Ken.T Portfolio",
+  "short_name": "Ken.T",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -15,8 +15,8 @@
       "purpose": "any maskable"
     }
   ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
+  "theme_color": "#040719",
+  "background_color": "#040719",
   "display": "standalone",
   "start_url": "/",
   "orientation": "portrait"
