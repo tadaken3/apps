@@ -203,41 +203,44 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .gallery-item {
-            border-radius: 16px;
-            overflow: hidden;
             position: relative;
             cursor: pointer;
-            /* aspect-ratioは削除して、コンテンツに合わせて高さを可変にする */
             display: flex;
             flex-direction: column;
+            align-items: center;
+            text-align: center;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out forwards;
         }
 
         .gallery-image-wrapper {
             position: relative;
-            width: 100%;
-            aspect-ratio: 1;
+            width: 140px;
+            height: 140px;
             overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        
+
+        .gallery-item:hover .gallery-image-wrapper {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s, filter 0.5s;
-            background-color: rgba(255,255,255,0.2);
-            /* カラフルさを少し抑えるために彩度を下げる */
-            filter: saturate(0.7);
+            transition: filter 0.3s;
+            filter: saturate(0.85);
         }
-        
+
         .gallery-item:hover img {
-            transform: scale(1.1);
-            /* ホバー時に彩度を元に戻す */
             filter: saturate(1);
         }
 
@@ -253,22 +256,22 @@
             justify-content: center;
             font-weight: 700;
             color: #333;
+            border-radius: 28px;
         }
-        
+
         .gallery-item:hover .item-overlay {
             opacity: 1;
         }
 
         /* アプリ説明文のスタイル */
         .app-description {
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(8px);
+            margin-top: 1rem;
+            padding: 0 0.5rem;
             font-size: 0.85rem;
             line-height: 1.6;
             color: #555;
-            text-align: left;
-            flex-grow: 1; /* 余白があれば埋める */
+            text-align: center;
+            max-width: 220px;
         }
 
         /* 拡大表示（モーダル） */
@@ -414,7 +417,7 @@
                 {
                     title: "旬で選ぶ買い物メモ",
                     category: "iOS App",
-                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/74/d4/06/74d4060d-9d82-f4b4-0097-38999a8f480d/Icon_kago_A-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
+                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/74/d4/06/74d4060d-9d82-f4b4-0097-38999a8f480d/Icon_kago_A-0-1x_U007ephone-0-1-85-220-0.png/540x540sr.jpg",
                     appUrl: "https://apps.apple.com/jp/app/%E6%97%AC%E3%81%A7%E9%81%B8%E3%81%B6%E8%B2%B7%E3%81%84%E7%89%A9%E3%83%A1%E3%83%A2-%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%84%E9%A3%9F%E6%9D%90-%E6%97%AC%E3%81%AE%E9%A3%9F%E6%9D%90%E3%81%8C%E3%81%99%E3%81%90%E3%81%AB%E3%82%8F%E3%81%8B%E3%82%8B/id6757065543",
                     description: "旬の食材がすぐにわかる買い物メモアプリ。美味しい食材を選んで、毎日の食卓を豊かに。"
                 },
@@ -481,9 +484,7 @@
                 const imgPath = meta.imageUrl;
 
                 const div = document.createElement('div');
-                div.className = 'gallery-item glass-card';
-                div.style.padding = '0';
-                div.style.marginBottom = '0';
+                div.className = 'gallery-item';
                 
                 // 表示アニメーションを少しずつずらす処理（テキストエリアがある分、遅延を少し増やす）
                 const baseDelay = config.freeContent && config.freeContent.show ? 0.5 : 0.3;
