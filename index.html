@@ -58,7 +58,19 @@
             display: flex; align-items: center; justify-content: center;
             transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
         }
-        .loader-text { font-size: 4rem; font-weight: 900; color: #fff; letter-spacing: 0.05em; }
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .loader-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .loader-text { font-size: 3rem; font-weight: 900; color: #fff; letter-spacing: 0.05em; }
         .loader.hide { transform: translateY(-100%); }
 
         /* ヘッダー */
@@ -69,7 +81,21 @@
             position: relative;
         }
         .header-top { display: flex; justify-content: space-between; align-items: flex-start; }
-        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.05em; line-height: 1; }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 1;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
 
         .hero-title {
             font-size: 13vw;
@@ -126,74 +152,73 @@
             margin: 0;
         }
 
-        /* App Cards - rollcake.co style */
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0;
+        /* App Cards - rollcake.co services style */
+        .apps-list {
+            padding: 0;
         }
         .app-card {
-            padding: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6rem 4rem;
             border-bottom: 1px solid #ccc;
-            cursor: pointer;
-            transition: background 0.3s;
+            text-align: center;
         }
-        .app-card:nth-child(odd) {
-            border-right: 1px solid #ccc;
-        }
-        .app-card:hover { background: #fff; }
+        .app-card:last-child { border-bottom: none; }
 
-        .app-icon-container {
+        .app-screenshot-container {
+            display: block;
             width: 70%;
-            margin: 0 auto 2rem;
-            aspect-ratio: 1;
+            max-width: 400px;
+            margin-bottom: 2.5rem;
+            cursor: pointer;
         }
-        .app-icon-img {
+        .app-screenshot {
             width: 100%;
-            height: 100%;
-            border-radius: 22%;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-            object-fit: cover;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            height: auto;
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
-        .app-card:hover .app-icon-img {
-            transform: scale(1.02);
+        .app-card:hover .app-screenshot {
+            transform: translateY(-8px);
         }
 
-        .app-num {
-            font-family: 'Inter';
-            font-weight: 600;
-            color: var(--accent);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-        }
         .app-title {
-            font-size: 1.8rem;
-            margin: 0 0 1rem 0;
-            font-weight: 800;
+            font-size: 2.2rem;
+            margin: 0 0 0.8rem 0;
+            font-weight: 900;
             line-height: 1.2;
             letter-spacing: -0.02em;
         }
-        .app-desc {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            opacity: 0.7;
+        .app-subtitle {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #666;
             margin-bottom: 1.5rem;
+        }
+        .app-desc {
+            font-size: 1rem;
+            line-height: 2;
+            opacity: 0.75;
+            max-width: 500px;
+            margin: 0 auto 2rem;
         }
         .app-platform {
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #666;
-            padding: 0.4rem 0.8rem;
+            padding: 0.5rem 1rem;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
+            margin-right: 0.5rem;
         }
         .app-link {
             display: inline-block;
-            margin-top: 1rem;
-            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--text);
             text-decoration: none;
@@ -206,15 +231,6 @@
             color: var(--accent);
         }
 
-        /* 画像表示エリア（ホバーで追従） */
-        .cursor-img {
-            position: fixed; width: 300px; height: 300px; object-fit: cover;
-            pointer-events: none; z-index: 10; opacity: 0;
-            transform: scale(0.8); transition: opacity 0.3s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 44px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-        .cursor-img.active { opacity: 1; transform: scale(1); }
 
         /* Brand Story Section */
         .story-content {
@@ -284,12 +300,11 @@
             }
 
             .big-lead { font-size: 1.5rem; padding: 2rem 1.5rem; }
-            .apps-grid { grid-template-columns: 1fr; }
-            .app-card { padding: 2rem 1.5rem; }
-            .app-card:nth-child(odd) { border-right: none; }
-            .app-icon-container { width: 60%; }
-            .app-title { font-size: 1.5rem; }
-            .cursor-img { display: none; }
+            .app-card { padding: 3rem 1.5rem; }
+            .app-screenshot-container { width: 80%; }
+            .app-screenshot { border-radius: 16px; }
+            .app-title { font-size: 1.6rem; }
+            .app-desc { font-size: 0.95rem; }
 
             .story-content { padding: 2rem 1.5rem; }
             .story-headline { font-size: 1.8rem; }
@@ -307,14 +322,19 @@
 <body>
 
     <div class="loader">
-        <div class="loader-text" id="loader-text">KEN.T</div>
+        <div class="loader-content">
+            <img src="image/profile.png" alt="Ken.T" class="loader-icon">
+            <div class="loader-text" id="loader-text">KEN.T</div>
+        </div>
     </div>
 
-    <img id="hover-reveal" class="cursor-img" src="" alt="">
 
     <header>
         <div class="header-top">
-            <div id="brand-name" class="logo"></div>
+            <div class="logo">
+                <img src="image/profile.png" alt="Ken.T" class="logo-icon">
+                <span id="brand-name"></span>
+            </div>
             <div id="brand-role" class="u-caps"></div>
         </div>
         <div>
@@ -404,31 +424,35 @@
             apps: [
                 {
                     title: "旬で選ぶ買い物メモ",
+                    subtitle: "美味しい食材、旬の食材がすぐにわかる",
                     description: "旬の食材がすぐにわかる買い物メモアプリ。美味しい食材を選んで、毎日の食卓を豊かに。",
-                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/74/d4/06/74d4060d-9d82-f4b4-0097-38999a8f480d/Icon_kago_A-0-1x_U007ephone-0-1-85-220-0.png/540x540sr.jpg",
+                    screenshot: "image/shun_memo.png",
                     appUrl: "https://apps.apple.com/jp/app/%E6%97%AC%E3%81%A7%E9%81%B8%E3%81%B6%E8%B2%B7%E3%81%84%E7%89%A9%E3%83%A1%E3%83%A2-%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%84%E9%A3%9F%E6%9D%90-%E6%97%AC%E3%81%AE%E9%A3%9F%E6%9D%90%E3%81%8C%E3%81%99%E3%81%90%E3%81%AB%E3%82%8F%E3%81%8B%E3%82%8B/id6757065543",
-                    cat: "Food & Lifestyle"
+                    platform: "iOS"
                 },
                 {
                     title: "Your Time",
+                    subtitle: "寿命を見える化し、目標に集中",
                     description: "残り時間を可視化し、人生の有限性に気づく。「やるべきこと」ではなく「やりたいこと」に時間を使うためのアプリ。",
-                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/a7/b3/c2a7b39a-507d-4f66-9f70-94fc910fa5f8/AppIcon-0-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
+                    screenshot: "image/your_time.png",
                     appUrl: "https://apps.apple.com/jp/app/your-time-%E5%AF%BF%E5%91%BD%E3%82%92%E8%A6%8B%E3%81%88%E3%82%8B%E5%8C%96%E3%81%97-%E7%9B%AE%E6%A8%99%E3%81%AB%E9%9B%86%E4%B8%AD/id6745560143",
-                    cat: "Productivity"
+                    platform: "iOS"
                 },
                 {
                     title: "Fit Routine",
+                    subtitle: "運動を習慣化する",
                     description: "1タップで運動記録。ウィジェットで今週の成果を確認し、運動習慣を継続しやすくするアプリ。",
-                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/ee/e0/61eee01e-b704-76d7-edf1-dca8316529d5/AppIcon-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
+                    screenshot: "image/fit_routine.png",
                     appUrl: "https://apps.apple.com/jp/app/fit-routine-%E9%81%8B%E5%8B%95%E3%82%92%E7%BF%92%E6%85%A3%E5%8C%96%E3%81%99%E3%82%8B/id6751544895",
-                    cat: "Health & Fitness"
+                    platform: "iOS"
                 },
                 {
                     title: "超集中タイマー",
+                    subtitle: "勉強・仕事に集中力を",
                     description: "25分の作業と5分の休憩を繰り返すポモドーロ・テクニック。シンプルで効果的な時間管理で集中力を高める。",
-                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ce/dc/06/cedc06ac-222c-af76-839b-dec723e90cda/AppIcon-0-1x_U007emarketing-0-8-0-85-220-0.png/540x540bb.jpg",
+                    screenshot: "image/fourcus_timer.png",
                     appUrl: "https://apps.apple.com/jp/app/%E8%B6%85%E9%9B%86%E4%B8%AD%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC-%E5%8B%89%E5%BC%B7-%E4%BB%95%E4%BA%8B%E3%81%AB%E9%9B%86%E4%B8%AD%E5%8A%9B%E3%82%92/id6743546176",
-                    cat: "Productivity"
+                    platform: "iOS"
                 }
             ],
 
@@ -479,35 +503,24 @@
                 <p class="story-closing">${story.closing}</p>
             `;
 
-            // Apps生成（2カラムグリッド）
+            // Apps生成（rollcake.co services風）
             const worksCont = document.getElementById('works-container');
-            worksCont.className = 'apps-grid';
-            const hoverImg = document.getElementById('hover-reveal');
+            worksCont.className = 'apps-list';
 
             config.apps.forEach((app, index) => {
                 const el = document.createElement('div');
                 el.className = 'app-card';
-                el.onclick = () => window.open(app.appUrl, '_blank');
 
                 el.innerHTML = `
-                    <div class="app-icon-container">
-                        <img src="${app.iconUrl}" class="app-icon-img" alt="${app.title}">
-                    </div>
-                    <div class="app-num">(${String(index + 1).padStart(2, '0')})</div>
+                    <a href="${app.appUrl}" class="app-screenshot-container" target="_blank" rel="noopener">
+                        <img src="${app.screenshot}" class="app-screenshot" alt="${app.title}">
+                    </a>
                     <h3 class="app-title">${app.title}</h3>
+                    <p class="app-subtitle">${app.subtitle}</p>
                     <p class="app-desc">${app.description}</p>
-                    <span class="app-platform"><i class="fa-brands fa-apple"></i> iOS</span>
-                    <a href="${app.appUrl}" class="app-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">App Storeで見る →</a>
+                    <span class="app-platform"><i class="fa-brands fa-apple"></i> ${app.platform}</span>
+                    <a href="${app.appUrl}" class="app-link" target="_blank" rel="noopener">App Storeで見る →</a>
                 `;
-
-                // マウス追従ロジック
-                el.addEventListener('mouseenter', () => {
-                    hoverImg.src = app.iconUrl;
-                    hoverImg.classList.add('active');
-                });
-                el.addEventListener('mouseleave', () => {
-                    hoverImg.classList.remove('active');
-                });
 
                 worksCont.appendChild(el);
             });
@@ -521,16 +534,6 @@
                 a.rel = 'noopener noreferrer';
                 a.innerHTML = `<i class="${l.icon}"></i>`;
                 footLinks.appendChild(a);
-            });
-
-            // マウス追従移動
-            document.addEventListener('mousemove', (e) => {
-                const x = e.clientX - 150;
-                const y = e.clientY - 150;
-                requestAnimationFrame(() => {
-                    hoverImg.style.left = `${x}px`;
-                    hoverImg.style.top = `${y}px`;
-                });
             });
 
             // オープニングアニメーション
