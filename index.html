@@ -10,6 +10,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
+    <meta name="description" content="1%良い選択を、毎日に。人生は日常の小さな選択でできている。Ken.TのiOSアプリポートフォリオ。">
+
+    <!-- OGP -->
+    <meta property="og:title" content="Ken.T | 1%良い選択を、毎日に。">
+    <meta property="og:description" content="日常の小さな選択が、人生の軌道を変える。Ken.TのiOSアプリとブランドストーリー。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tadaken3.github.io/apps/">
+    <meta property="og:image" content="https://tadaken3.github.io/apps/image/ogp.png">
+    <meta name="twitter:card" content="summary_large_image">
 
     <meta name="apple-mobile-web-app-title" content="Ken.T">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -392,6 +401,15 @@
         </div>
     </footer>
 
+    <!-- JS無効時のフォールバック -->
+    <noscript>
+        <style>
+            .loader { display: none !important; }
+            .hero-title span { opacity: 1 !important; transform: none !important; }
+            .hero-sub { opacity: 0.7 !important; transform: none !important; }
+        </style>
+    </noscript>
+
     <script>
         // ==========================================
         // ★ 設定エリア
@@ -417,10 +435,11 @@
                 paragraphs: [
                     "大きな決断や、劇的な出来事が人生を変えてくれることは、ほとんどありません。",
                     "でも、日々の選択は必ず積み上がる。今日どんな時間を使ったか。何を基準に選んだか。その小さな選択が、少しずつ人生を形づくっていきます。",
-                    "選択の質が上がれば、人生は急に変わらなくても、進む方向がズレていく。"
+                    "選択の質が上がれば、人生は急に変わらなくても、進む方向がズレていく。",
+                    "ここでいう「良い選択」は、効率だけを指しません。遠回りして季節を感じること、あえて何もしない時間を選ぶことも、立派な1%です。"
                 ],
                 highlight: "だからKen.Tは、毎日を変えるアプリを作っています。",
-                closing: "忙しい日常の中でも、「今日はちゃんと選べた」と思える瞬間を増やすために。"
+                closing: "忙しい日常の中でも、「今日はちゃんと選べた」と思える瞬間を増やすために。劇的には変わらない。でも、半年後の景色ははっきりと変わる。"
             },
 
             // アプリ情報
@@ -545,6 +564,15 @@
                 document.body.classList.add('loaded');
             }, 800);
         });
+
+        // ローダー強制解除（JSエラー・外部読み込み失敗対策）
+        window.setTimeout(() => {
+            const loader = document.querySelector('.loader');
+            if (loader && !loader.classList.contains('hide')) {
+                loader.classList.add('hide');
+                document.body.classList.add('loaded');
+            }
+        }, 3500);
     </script>
 </body>
 </html>
