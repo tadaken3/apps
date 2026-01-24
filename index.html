@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--
-  Template: GLASS v1.0
-  Author: Haruki Tominaga
-  License: https://amix-design.com/tominaga/eyan-theme/license 
-  © 2025 EYAN / トミナガハルキ
--->
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -14,45 +8,231 @@
     <meta name="apple-mobile-web-app-title" content="Ken.T">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#040719">
+    <meta name="theme-color" content="#ffffff">
 
     <title>Ken.T | Portfolio</title>
 
     <link rel="icon" href="image/favicons/favicon.ico">
     <link rel="apple-touch-icon" href="image/favicons/apple-icon.png">
     <link rel="manifest" href="image/favicons/manifest.json">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=M+PLUS+Rounded+1c:wght@300;500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
-        /* 【デザイン設定エリア】
-           ここを変えるだけでサイト全体の色味が変わります。
-        */
-        :root {
-            --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* 全体の背景色 */
-            --glass-bg: rgba(255, 255, 255, 0.25);   /* ガラスの背景色（透明度） */
-            --glass-border: rgba(255, 255, 255, 0.5); /* ガラスの枠線 */
-            --text-main: #444;                        /* 文字色 */
-            --accent: #8e9eab;                        /* アクセントカラー */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Quicksand', 'M PLUS Rounded 1c', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #e0e5ec;
-            color: var(--text-main);
-            min-height: 100vh;
+            font-family: 'Noto Sans JP', sans-serif;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.8;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* ふわっと表示されるアニメーション */
+        /* ヒーローセクション */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .brand-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .brand-name {
+            font-size: 3rem;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-out 0.2s backwards;
+        }
+
+        /* 縦書きキャッチコピー */
+        .vertical-catchphrase {
+            writing-mode: vertical-rl;
+            font-size: 2rem;
+            font-weight: 500;
+            line-height: 1.8;
+            margin: 3rem 0;
+            animation: fadeIn 1s ease-out 0.4s backwards;
+        }
+
+        /* コンテナ */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* アプリセクション */
+        .app-section {
+            padding: 4rem 0;
+        }
+
+        .app-card {
+            margin-bottom: 8rem;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .app-card:nth-child(1) { animation-delay: 0.2s; }
+        .app-card:nth-child(2) { animation-delay: 0.4s; }
+        .app-card:nth-child(3) { animation-delay: 0.6s; }
+        .app-card:nth-child(4) { animation-delay: 0.8s; }
+
+        /* 縦書きセクションタイトル */
+        .vertical-section-title {
+            writing-mode: vertical-rl;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0 auto 2rem auto;
+            text-align: center;
+        }
+
+        /* iPhoneモックアップ */
+        .phone-mockup {
+            position: relative;
+            width: 280px;
+            margin: 0 auto 2rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .phone-mockup:hover {
+            transform: translateY(-8px);
+        }
+
+        .phone-frame {
+            width: 100%;
+            border-radius: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+
+        /* アプリ名 */
+        .app-name {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* アプリ説明 */
+        .app-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #666;
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* プラットフォームアイコン */
+        .platform-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .platform-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .platform-icon i {
+            font-size: 1.5rem;
+        }
+
+        /* サービス詳細リンク */
+        .service-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 2rem;
+            border: 2px solid #333;
+            border-radius: 50px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .service-link:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        /* フッター */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-cta {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .footer-link:hover {
+            opacity: 0.7;
+            transform: translateY(-2px);
+        }
+
+        .footer-brand {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* アニメーション */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
             to {
                 opacity: 1;
@@ -60,484 +240,161 @@
             }
         }
 
-        /* 背景の動くボール (装飾) */
-        .blob {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(60px);
-            z-index: -1;
-            opacity: 0.8;
-            animation: float 10s infinite alternate;
-        }
-        /* ボールの色とサイズ設定 */
-        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #ffafbd; }
-        .blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: #2193b0; animation-delay: -5s; }
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .brand-name {
+                font-size: 2rem;
+            }
 
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 50px); }
-        }
+            .vertical-catchphrase {
+                font-size: 1.5rem;
+            }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
+            .app-name {
+                font-size: 1.5rem;
+            }
 
-        /* ガラスカードのデザイン定義 */
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.05);
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        /* プロフィールセクション */
-        .profile-card {
-            text-align: center;
-            padding: 2.5rem 1.5rem; /* 省スペース化: 4rem -> 2.5rem */
-            opacity: 0;
-            animation: fadeInUp 1s ease-out forwards;
-        }
-
-        .profile-img {
-            width: 90px;  /* 省スペース化: 120px -> 90px */
-            height: 90px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid rgba(255,255,255,0.8);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 0.8rem; /* 省スペース化: 1.5rem -> 0.8rem */
-            background-color: #fff;
-        }
-
-        h1 {
-            font-size: 2rem; /* 省スペース化: 2.5rem -> 2rem */
-            margin: 0.2rem 0;
-            color: #333;
-        }
-
-        .role {
-            font-weight: 500;
-            color: #666;
-            margin-bottom: 1.2rem; /* 省スペース化: 2rem -> 1.2rem */
-            letter-spacing: 0.05em;
-            font-size: 0.9rem;
-        }
-
-        .links-row {
-            display: flex;
-            justify-content: center;
-            gap: 1rem; /* 省スペース化: 1.5rem -> 1rem */
-            flex-wrap: wrap;
-        }
-        
-        /* リンクボタンのデザイン */
-        /* リンクボタンのデザイン（アイコン用） */
-        .glass-btn {
-            background: rgba(255, 255, 255, 0.4);
-            width: 44px; /* 省スペース化: 50px -> 44px */
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #555;
-            font-size: 1.1rem; /* 少し小さく */
-            transition: 0.3s;
-            border: 1px solid #fff;
-            position: relative;
-        }
-        .glass-btn:hover {
-            background: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            color: #333;
-        }
-        /* ツールチップ（ホバー時にサービス名を表示） */
-        .glass-btn::after {
-            content: attr(aria-label);
-            position: absolute;
-            bottom: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.2s;
-            pointer-events: none;
-        }
-        .glass-btn:hover::after {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* --- 追加: テキストコンテンツエリア用スタイル --- */
-        .text-content-card {
-            text-align: left;
-            line-height: 1.8;
-            opacity: 0;
-            animation: fadeInUp 1s ease-out 0.2s forwards; /* 少し遅れて表示 */
-        }
-        .text-content-card h2 {
-            margin-top: 0;
-            font-size: 1.5rem;
-            color: #555;
-            border-bottom: 1px solid rgba(255,255,255,0.6);
-            padding-bottom: 0.8rem;
-            margin-bottom: 1.5rem;
-        }
-        /* ------------------------------------------- */
-
-        /* ギャラリーグリッド設定 */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .gallery-image-wrapper {
-            position: relative;
-            width: 140px;
-            height: 140px;
-            overflow: hidden;
-            border-radius: 28px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .gallery-item:hover .gallery-image-wrapper {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: filter 0.3s;
-            filter: saturate(0.85);
-        }
-
-        .gallery-item:hover img {
-            filter: saturate(1);
-        }
-
-        .item-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(4px);
-            opacity: 0;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            color: #333;
-            border-radius: 28px;
-        }
-
-        .gallery-item:hover .item-overlay {
-            opacity: 1;
-        }
-
-        /* アプリ説明文のスタイル */
-        .app-description {
-            margin-top: 1rem;
-            padding: 0 0.5rem;
-            font-size: 0.85rem;
-            line-height: 1.6;
-            color: #555;
-            text-align: center;
-            max-width: 220px;
-        }
-
-        /* 拡大表示（モーダル） */
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(10px);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            width: 90%;
-            max-width: 600px;
-            background: #fff;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transform: scale(0.9);
-            transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .modal-overlay.active .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-img {
-            width: 100%;
-            height: auto;
-            max-height: 70vh;
-            object-fit: contain;
-            background-color: #f0f0f0;
-            display: block;
-        }
-        .modal-body {
-            padding: 2rem;
-            text-align: center;
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .blob { opacity: 0.5; }
+            .phone-mockup {
+                width: 220px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-
-    <div class="container">
-        <div class="glass-card profile-card">
-            <img src="image/profile.png" 
-                 alt="Profile" class="profile-img"
-                 onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22200%22%20height%3D%22200%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20200%20200%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1%22%3E%3Crect%20width%3D%22200%22%20height%3D%22200%22%20fill%3D%22%23cccccc%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2274%22%20y%3D%22104%22%3EProfile%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'">
-            
-            <h1 id="user-name"></h1>
-            <p id="user-role" class="role"></p>
-            <p id="user-bio" style="margin-bottom: 1.5rem; line-height: 1.6; font-size: 0.95rem;"></p>
-            
-            <div id="links-container" class="links-row">
-            </div>
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <img src="image/profile.png" alt="Ken.T" class="brand-logo"
+             onerror="this.style.display='none'">
+        <h1 class="brand-name" id="brand-name">KEN.T</h1>
+        <div class="vertical-catchphrase" id="catchphrase">
+            日常の選択を、楽しい体験に変える。
         </div>
+    </section>
 
-        <div id="text-content-area" class="glass-card text-content-card" style="display: none;">
-            <h2 id="text-content-title"></h2>
-            <div id="text-content-body"></div>
+    <!-- アプリセクション -->
+    <section class="app-section">
+        <div class="container">
+            <div class="vertical-section-title">楽しみは手のひらから</div>
+            <div id="apps-container"></div>
         </div>
+    </section>
 
-        <div id="gallery-grid" class="gallery-grid">
-        </div>
-    </div>
-
-    <div id="modal" class="modal-overlay" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <img id="modal-img" src="" class="modal-img" onclick="closeModal()" style="cursor: pointer;">
-            <div class="modal-body">
-                <h2 id="modal-title" style="margin: 0 0 0.5rem 0;"></h2>
-                <p id="modal-cat" style="color: #888; margin: 0;">Category</p>
-            </div>
-        </div>
-    </div>
+    <!-- フッター -->
+    <footer class="footer">
+        <p class="footer-cta">楽しい体験を一緒につくる</p>
+        <div class="footer-links" id="footer-links"></div>
+        <p class="footer-brand" id="footer-brand">Ken.T</p>
+    </footer>
 
     <script>
         /**
          * ==============================================
-         * 簡単設定エリア
-         * 以下の内容を書き換えるだけでサイトが完成します
+         * 設定エリア
          * ==============================================
          */
         const config = {
-            // あなたのお名前
-            name: "Ken.T",
-            
-            // 肩書き
-            role: "iOS Developer",
-            
-            // 簡単な自己紹介（プロフィールカード内）
-            // 簡単な自己紹介（プロフィールカード内）
-            bio: "人の記憶に残る、暮らしを豊かにするアプリを作っています。<br>一冊の本が人生を変えるように、<br>たった一つのアプリが誰かの人生を変えると信じて。",
-            
-            // 【NEW】追加コンテンツエリア
-            // ここにタイトルと本文を入力すると、プロフィールの下に表示されます。
-            // 不要な場合は、show: false にしてください。
-            freeContent: {
-                show: false, // trueで表示、falseで非表示
-                title: "About Me & Philosophy",
-                body: `
-                    ここでは、短い自己紹介文には書ききれない詳細な情報を掲載できます。<br><br>
-                    例えば、これまでの経歴や、仕事に対する哲学、趣味の話など、自由なテキストコンテンツを追加してください。<br>
-                    デザインは他のカードと同じガラスのスタイルが適用されるため、サイト全体の統一感を損なうことなく、
-                    情報量を増やすことができます。<br><br>
-                    改行（&lt;br&gt;）も自由に使えます。
-                `
-            },
+            brandName: "KEN.T",
+            catchphrase: "日常の選択を、楽しい体験に変える。",
 
-            // SNSなどのリンク設定 (iconはFontAwesomeのクラス名)
+            // SNSリンク
             links: [
                 { label: "Instagram", url: "https://www.instagram.com/ken.t.code", icon: "fa-brands fa-instagram" },
                 { label: "Threads", url: "https://www.threads.com/@ken.t.code", icon: "fa-brands fa-threads" },
                 { label: "note", url: "https://note.com/ken_t_code", icon: "fa-solid fa-pen-nib" },
                 { label: "TikTok", url: "https://www.tiktok.com/@ken.t.code", icon: "fa-brands fa-tiktok" },
-                { label: "X (Twitter)", url: "https://x.com/KenT_code3", icon: "fa-brands fa-x-twitter" },
+                { label: "X", url: "https://x.com/KenT_code3", icon: "fa-brands fa-x-twitter" },
                 { label: "Zenn", url: "https://zenn.dev/kent3", icon: "fa-solid fa-code" },
                 { label: "SpeakerDeck", url: "https://speakerdeck.com/kent_code3", icon: "fa-brands fa-speaker-deck" },
                 { label: "GitHub", url: "https://github.com/tadaken3", icon: "fa-brands fa-github" }
             ],
 
-            // ギャラリーの画像設定
-            // title: 画像の上に表示されるタイトル
-            // category: 拡大時に表示されるカテゴリ名
-            // imageUrl: 画像のURL
-            metaData: [
+            // アプリ情報
+            apps: [
                 {
                     title: "旬で選ぶ買い物メモ",
-                    category: "iOS App",
-                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/74/d4/06/74d4060d-9d82-f4b4-0097-38999a8f480d/Icon_kago_A-0-1x_U007ephone-0-1-85-220-0.png/540x540sr.jpg",
+                    description: "旬の食材がすぐにわかる買い物メモアプリ。美味しい食材を選んで、毎日の食卓を豊かに。",
+                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/74/d4/06/74d4060d-9d82-f4b4-0097-38999a8f480d/Icon_kago_A-0-1x_U007ephone-0-1-85-220-0.png/540x540sr.jpg",
                     appUrl: "https://apps.apple.com/jp/app/%E6%97%AC%E3%81%A7%E9%81%B8%E3%81%B6%E8%B2%B7%E3%81%84%E7%89%A9%E3%83%A1%E3%83%A2-%E7%BE%8E%E5%91%B3%E3%81%97%E3%81%84%E9%A3%9F%E6%9D%90-%E6%97%AC%E3%81%AE%E9%A3%9F%E6%9D%90%E3%81%8C%E3%81%99%E3%81%90%E3%81%AB%E3%82%8F%E3%81%8B%E3%82%8B/id6757065543",
-                    description: "旬の食材がすぐにわかる買い物メモアプリ。美味しい食材を選んで、毎日の食卓を豊かに。"
+                    platforms: ["iOS"]
                 },
                 {
                     title: "Your Time",
-                    category: "iOS App",
-                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/a7/b3/c2a7b39a-507d-4f66-9f70-94fc910fa5f8/AppIcon-0-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
+                    description: "残り時間を可視化し、人生の有限性に気づく。「やるべきこと」ではなく「やりたいこと」に時間を使うためのアプリ。",
+                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/a7/b3/c2a7b39a-507d-4f66-9f70-94fc910fa5f8/AppIcon-0-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
                     appUrl: "https://apps.apple.com/jp/app/your-time-%E5%AF%BF%E5%91%BD%E3%82%92%E8%A6%8B%E3%81%88%E3%82%8B%E5%8C%96%E3%81%97-%E7%9B%AE%E6%A8%99%E3%81%AB%E9%9B%86%E4%B8%AD/id6745560143",
-                    description: "残り時間を可視化し、人生の有限性に気づく。「やるべきこと」ではなく「やりたいこと」に時間を使うためのアプリ。"
+                    platforms: ["iOS"]
                 },
                 {
                     title: "Fit Routine",
-                    category: "iOS App",
-                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/ee/e0/61eee01e-b704-76d7-edf1-dca8316529d5/AppIcon-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
+                    description: "1タップで運動記録。ウィジェットで今週の成果を確認し、運動習慣を継続しやすくするアプリ。",
+                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/61/ee/e0/61eee01e-b704-76d7-edf1-dca8316529d5/AppIcon-0-1x_U007ephone-0-1-85-220-0.png/540x540bb.jpg",
                     appUrl: "https://apps.apple.com/jp/app/fit-routine-%E9%81%8B%E5%8B%95%E3%82%92%E7%BF%92%E6%85%A3%E5%8C%96%E3%81%99%E3%82%8B/id6751544895",
-                    description: "1タップで運動記録。ウィジェットで今週の成果を確認し、運動習慣を継続しやすくするアプリ。"
+                    platforms: ["iOS"]
                 },
                 {
                     title: "超集中タイマー",
-                    category: "iOS App",
-                    imageUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ce/dc/06/cedc06ac-222c-af76-839b-dec723e90cda/AppIcon-0-1x_U007emarketing-0-8-0-85-220-0.png/540x540bb.jpg",
+                    description: "25分の作業と5分の休憩を繰り返すポモドーロ・テクニック。シンプルで効果的な時間管理で集中力を高める。",
+                    iconUrl: "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ce/dc/06/cedc06ac-222c-af76-839b-dec723e90cda/AppIcon-0-1x_U007emarketing-0-8-0-85-220-0.png/540x540bb.jpg",
                     appUrl: "https://apps.apple.com/jp/app/%E8%B6%85%E9%9B%86%E4%B8%AD%E3%82%BF%E3%82%A4%E3%83%9E%E3%83%BC-%E5%8B%89%E5%BC%B7-%E4%BB%95%E4%BA%8B%E3%81%AB%E9%9B%86%E4%B8%AD%E5%8A%9B%E3%82%92/id6743546176",
-                    description: "25分の作業と5分の休憩を繰り返すポモドーロ・テクニック。シンプルで効果的な時間管理で集中力を高める。"
+                    platforms: ["iOS"]
                 }
             ]
         };
 
         /**
          * ==============================================
-         * ここから下はプログラム処理です（変更不要）
+         * 初期化処理
          * ==============================================
          */
-
         document.addEventListener('DOMContentLoaded', () => {
-            // プロフィール情報の反映
-            document.getElementById('user-name').textContent = config.name;
-            document.getElementById('user-role').textContent = config.role;
-            document.getElementById('user-bio').innerHTML = config.bio;
+            // ブランド名とキャッチフレーズの設定
+            document.getElementById('brand-name').textContent = config.brandName;
+            document.getElementById('catchphrase').textContent = config.catchphrase;
+            document.getElementById('footer-brand').textContent = config.brandName;
 
-            // 追加コンテンツエリアの反映処理
-            const textArea = document.getElementById('text-content-area');
-            if (config.freeContent && config.freeContent.show) {
-                textArea.style.display = 'block';
-                document.getElementById('text-content-title').textContent = config.freeContent.title;
-                document.getElementById('text-content-body').innerHTML = config.freeContent.body;
-            }
+            // アプリカードの生成
+            const appsContainer = document.getElementById('apps-container');
+            config.apps.forEach((app, index) => {
+                const appCard = document.createElement('div');
+                appCard.className = 'app-card';
 
-            // リンクボタンの生成
-            const linksContainer = document.getElementById('links-container');
-            config.links.forEach(link => {
-                // 変更点: アイコンを表示、ツールチップ用にaria-labelを設定
-                linksContainer.innerHTML += `
-                    <a href="${link.url}" class="glass-btn" target="_blank" rel="noopener noreferrer" aria-label="${link.label}">
-                        <i class="${link.icon}"></i>
-                    </a>`;
+                // プラットフォームアイコンの生成
+                const platformIcons = app.platforms.map(platform => {
+                    const icon = platform === 'iOS' ? 'fa-brands fa-apple' : 'fa-brands fa-android';
+                    return `
+                        <div class="platform-icon">
+                            <i class="${icon}"></i>
+                            <span>${platform}</span>
+                        </div>
+                    `;
+                }).join('');
+
+                appCard.innerHTML = `
+                    <div class="phone-mockup" onclick="window.open('${app.appUrl}', '_blank')">
+                        <img src="${app.iconUrl}" alt="${app.title}" class="phone-frame">
+                    </div>
+                    <h2 class="app-name">${app.title}</h2>
+                    <p class="app-description">${app.description}</p>
+                    <div class="platform-icons">
+                        ${platformIcons}
+                    </div>
+                `;
+
+                appsContainer.appendChild(appCard);
             });
 
-            // ギャラリーの生成
-            const grid = document.getElementById('gallery-grid');
-            
-            config.metaData.forEach((meta, index) => {
-                // データインデックスはそのまま使用
-                const i = index + 1;
-                const imgPath = meta.imageUrl;
-
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                
-                // 表示アニメーションを少しずつずらす処理（テキストエリアがある分、遅延を少し増やす）
-                const baseDelay = config.freeContent && config.freeContent.show ? 0.5 : 0.3;
-                div.style.animationDelay = `${baseDelay + (i * 0.1)}s`;
-
-                // 画像読み込みエラー時（ファイルがない場合）はその要素自体を非表示にする
-                div.innerHTML = `
-                    <div class="gallery-image-wrapper">
-                        <img src="${imgPath}" 
-                             alt="${meta.title}"
-                             onerror="this.closest('.gallery-item').style.display='none'">
-                        <div class="item-overlay">
-                            <span>${meta.title}</span>
-                        </div>
-                    </div>
-                    ${meta.description ? `<div class="app-description">${meta.description}</div>` : ''}
-                `;
-                
-                // クリック時の動作: アプリのURLがあればそこに遷移、なければ以前同様モーダルを開く(今回は全て遷移させるか、要件外だがクリックで詳細へ飛ぶのが自然)
-                // しかし、Issueでは「アプリのまとめサイトを入れる」とあり、リンクが必要。
-                // 元のコードはモーダルを開く仕様。
-                // 今回はモーダルで拡大表示する画像の代わりにアプリアイコンを表示しつつ、
-                // タップしたらアプリストアへ飛ぶように変更するか？
-                // しかし元の仕様を壊しすぎるのも危険。
-                // ひとまずモーダル表示は維持しつつ、モーダル内にリンクを表示するか？
-                // あるいはクリックしたら別タブで開くようにするか。
-                // Issueには「リンクを追加したい」とは明記されていないが、アプリへのリンクURLが貼られているので、遷移できることが望ましい。
-                // ここではシンプルに、クリックしたらモーダルではなくアプリURLへ飛ぶように変更しよう。
-                // 元のコード: div.onclick = () => openModal(meta.title, meta.category, imgPath);
-                
-                if (meta.appUrl) {
-                    div.onclick = () => window.open(meta.appUrl, '_blank');
-                    // カーソルをポインターにする
-                    div.style.cursor = 'pointer';
-                } else {
-                    div.onclick = () => openModal(meta.title, meta.category, imgPath);
-                }
-                
-                grid.appendChild(div);
+            // フッターリンクの生成
+            const footerLinks = document.getElementById('footer-links');
+            config.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.className = 'footer-link';
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.innerHTML = `<i class="${link.icon}"></i>`;
+                footerLinks.appendChild(a);
             });
         });
-
-        // モーダル操作
-        const modal = document.getElementById('modal');
-        function openModal(title, category, src) {
-            document.getElementById('modal-img').src = src;
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-cat').textContent = category;
-            modal.classList.add('active');
-        }
-        function closeModal() {
-            modal.classList.remove('active');
-        }
     </script>
 </body>
 </html>
